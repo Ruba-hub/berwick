@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Berwick Manor</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 1000, // animation speed
+          once: false, // animate only once
+        });
+      });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B4513", // A brown color inspired by the logo
+              "background-light": "#F5F5F5",
+              "background-dark": "#121212",
+              "text-light": "#1A202C",
+              "text-dark": "#E2E8F0",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Hero background */
+      .hero {
+        background-image: url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* Nav links (you can also just use Tailwind classes in HTML) */
+
+      .nav-link {
+        color: antiquewhite;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #d1d5db; /* Tailwind gray-300 */
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Body height */
+      body {
+        min-height: max(884px, 100dvh);
+      }
+      .nav {
+        background: transparent;
+      }
+      /* Smooth fade-in for hero text */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1.2s ease-out forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
+  >
+    <div class="min-h-screen flex flex-col">
+      <header class="fixed w-full top-0 z-50 bg-black bg-opacity-50">
+        <div
+          class="container mx-auto flex items-center justify-between py-3 px-6 md:px-12"
+        >
+          <!-- Group logo + nav together -->
+          <div class="flex items-center space-x-8 mx-auto">
+            <!-- Logo -->
+            <img
+              alt="Berwick Manor Logo"
+              class="h-12 w-12 md:h-14 md:w-14"
+              src="Logo white.png"
+            />
+
+            <!-- Nav -->
+            <nav data-aos="fade">
+              <ul class="hidden md:flex items-center space-x-6">
+                <li>
+                  <a href="#" class="text-white hover:text-gray-300 transition"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#menu"
+                    class="text-white hover:text-gray-300 transition"
+                    >Menu</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    class="text-white hover:text-gray-300 transition"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#gallery"
+                    class="text-white hover:text-gray-300 transition"
+                    >Gallery</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="text-white hover:text-gray-300 transition"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Mobile button -->
+          <button
+            class="md:hidden text-white"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <span class="material-icons">menu</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="flex-grow" data-aos="fade-up" data-aos-duration="2000">
+        <section
+          class="hero relative h-screen flex items-center justify-center"
+          data-aos="fade-up"
+        >
+          <!-- Lighter full-hero overlay -->
+          <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+          <!-- Hero content with its own darker background -->
+          <div
+            class="relative z-10 text-center"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <div
+              class="bg-black bg-opacity-60 p-8 rounded-lg inline-block"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
+              <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">
+                Berwick Manor
+              </h1>
+              <p class="text-xl md:text-2xl mb-8 text-white">
+                Dining and Shisha Lounge
+              </p>
+              <a
+                class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 duration-300"
+                href="#"
+              >
+                Reserve a Table
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="py-20 px-6 md:px-12 bg-background-light dark:bg-background-dark"
+          id="about"
+        >
+          <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div
+                class="order-2 md:order-1"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+              >
+                <h2 class="text-4xl font-bold mb-6 text-primary">About Us</h2>
+                <p class="mb-4 text-text-light dark:text-text-dark">
+                  Nestled in the heart of the city, Berwick Manor is a sanctuary
+                  for those who appreciate the finer things in life. We blend
+                  traditional hospitality with modern culinary innovation to
+                  create an unforgettable dining experience.
+                </p>
+                <p class="mb-6 text-text-light dark:text-text-dark">
+                  Our passion is to serve exquisite dishes prepared with the
+                  freshest, locally-sourced ingredients. Paired with our premium
+                  shisha lounge, we offer a unique atmosphere for relaxation and
+                  socializing. At Berwick Manor, every visit is more than just a
+                  meal; it's a memory in the making.
+                </p>
+                <a
+                  class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 duration-300 inline-block"
+                  href="#"
+                  >Learn More</a
+                >
+              </div>
+              <div
+                class="order-1 md:order-2"
+                data-aos="fade-left"
+                data-aos-duration="2000"
+              >
+                <img
+                  alt="Interior of Berwick Manor"
+                  class="rounded-lg shadow-lg w-full h-auto object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0iOhNUs0kHNrfgXIHB0sM_h6Q5O_XA95lG6BttmI1IO9RUq7mi2GlQJz1RdT-LKtFrLW58lUTHmK0yYAs02ozCaJwgsD7elBhNuNthDmhn6VHXwCsSiI_tV1IiPi97tnJw_j_EQobMhI9RtWOy4YCGgNMcqVuwmPP_V7TsiRt8G2_nIHNRd4UbiwgzGfEZJ-taseixbXNfCGoG2hsSWGfH54W4zNY89y061B9MRPhHKkjYZNFwtomHmQzHJhzqq4JIVvpSCp8dQ"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-20 px-6 md:px-12 bg-white dark:bg-gray-800">
+          <div class="container mx-auto">
+            <h2
+              class="text-4xl font-bold text-center mb-12 text-primary"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
+              Why Choose Us?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div class="text-center">
+                <div
+                  class="flex items-center justify-center h-20 w-20 rounded-full bg-primary text-white mx-auto mb-4"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                >
+                  <span class="material-icons text-4xl">restaurant_menu</span>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-3 text-primary"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                >
+                  Exquisite Cuisine
+                </h3>
+                <p
+                  class="text-text-light dark:text-text-dark"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                >
+                  Our menu is a masterpiece of culinary art, featuring a fusion
+                  of traditional flavors and contemporary techniques, all
+                  prepared with the freshest local ingredients.
+                </p>
+              </div>
+              <div
+                class="text-center"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
+                <div
+                  class="flex items-center justify-center h-20 w-20 rounded-full bg-primary text-white mx-auto mb-4"
+                >
+                  <span class="material-icons text-4xl">local_bar</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-primary">
+                  Premium Shisha
+                </h3>
+                <p class="text-text-light dark:text-text-dark">
+                  Indulge in our wide selection of premium shisha flavors in a
+                  luxurious and comfortable lounge setting, perfect for
+                  relaxation and conversation.
+                </p>
+              </div>
+              <div
+                class="text-center"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
+                <div
+                  class="flex items-center justify-center h-20 w-20 rounded-full bg-primary text-white mx-auto mb-4"
+                >
+                  <span class="material-icons text-4xl">celebration</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-primary">
+                  Unforgettable Ambiance
+                </h3>
+                <p class="text-text-light dark:text-text-dark">
+                  From the elegant decor to the warm, inviting atmosphere, every
+                  detail at Berwick Manor is designed to provide an exceptional
+                  and memorable experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-20 px-6 md:px-12" id="menu">
+          <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">
+              Our Menu
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">Appetizers</h3>
+                <ul>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Hummus with Pita</span>
+                    <span class="font-semibold text-primary">$8</span>
+                  </li>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Falafel Bites</span>
+                    <span class="font-semibold text-primary">$10</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span>Stuffed Grape Leaves</span>
+                    <span class="font-semibold text-primary">$9</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                data-aos="fade-right"
+                data-aos-duration="2500"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">
+                  Main Courses
+                </h3>
+                <ul>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Grilled Lamb Chops</span>
+                    <span class="font-semibold text-primary">$28</span>
+                  </li>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Chicken Shawarma Platter</span>
+                    <span class="font-semibold text-primary">$22</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span>Berwick Manor Burger</span>
+                    <span class="font-semibold text-primary">$18</span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                data-aos="fade-right"
+                data-aos-duration="3000"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">
+                  Shisha Flavors
+                </h3>
+                <ul>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Double Apple</span>
+                    <span class="font-semibold text-primary">$25</span>
+                  </li>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Mint Grape</span>
+                    <span class="font-semibold text-primary">$25</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span>Berwick Special Mix</span>
+                    <span class="font-semibold text-primary">$30</span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                data-aos="fade-right"
+                data-aos-duration="2500"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">Desserts</h3>
+                <ul>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Baklava</span>
+                    <span class="font-semibold text-primary">$9</span>
+                  </li>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Chocolate Lava Cake</span>
+                    <span class="font-semibold text-primary">$12</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span>Cheesecake</span>
+                    <span class="font-semibold text-primary">$10</span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                data-aos="fade-right"
+                data-aos-duration="3000"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">Drinks</h3>
+                <ul>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Moroccan Mint Tea</span>
+                    <span class="font-semibold text-primary">$6</span>
+                  </li>
+                  <li
+                    class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700"
+                  >
+                    <span>Fresh Orange Juice</span>
+                    <span class="font-semibold text-primary">$7</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span>Signature Cocktails</span>
+                    <span class="font-semibold text-primary">$15</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-20 px-6 md:px-12 bg-background-light dark:bg-gray-800"
+          id="testimonials"
+        >
+          <div class="container mx-auto">
+            <h2
+              class="text-4xl font-bold text-center mb-12 text-primary"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
+              What Our Guests Say
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="bg-white dark:bg-background-dark rounded-lg shadow-lg p-6 flex flex-col"
+                data-aos="fade-up"
+                data-aos-duration="3000"
+              >
+                <div class="flex-grow">
+                  <p class="text-text-light dark:text-text-dark mb-4">
+                    "An absolute gem! The food was exquisite, the ambiance was
+                    perfect, and the shisha was the best I've had. A truly
+                    memorable evening."
+                  </p>
+                </div>
+                <div class="flex items-center mt-4">
+                  <img
+                    alt="Avatar of a smiling man"
+                    class="w-12 h-12 rounded-full mr-4"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1k3IdGebRQ2jOP2rmShXJKzqa4-H-ODFe8mijeXQ4fUQ4ut5l3EBe6rdJ4DSYbTh2TKoR04r-OCSWbTk196wAnL7CVdsCnmAvRTDVVmCCCGgUsMFZQjQHbBkpNFQH14aodx6Nw3CuAnokxz2gFexb9EkRnzJpLicFIq9_r-v2QWjkapU8sZpoYoaDwOPOuCbsLrvumd29_4uam7P_-t6RqxBBCpA4ciRKF4YrMGzzbSSM7FwH7Du1DhT4zogb5kk9oW7wZLYbPA"
+                  />
+                  <div>
+                    <p class="font-semibold text-primary">John D.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Food Critic
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-background-dark rounded-lg shadow-lg p-6 flex flex-col"
+                data-aos="fade-up"
+                data-aos-duration="2500"
+              >
+                <div class="flex-grow">
+                  <p class="text-text-light dark:text-text-dark mb-4">
+                    "The service was impeccable from start to finish. The staff
+                    were so attentive and friendly. I felt like royalty. Highly
+                    recommend the lamb chops!"
+                  </p>
+                </div>
+                <div class="flex items-center mt-4">
+                  <img
+                    alt="Avatar of a smiling woman"
+                    class="w-12 h-12 rounded-full mr-4"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6ign0CEjc5zILSpHWBlz6ujjECHjvnwpuLNj4HOVB0zl2IeBq-jjQ133z0N4QMV6aax_D-JgpdnfFGR-amSgMLd2u_j7gyy3VcjnJfRK6SRqRqG_GogmvQ-KseVVWpsaW7E-qeQZtjVORaQDb5eCEoE2Wa_8_dggK4duC1UnZ-wzHRvQmOeUtnPONHcF6q5QeekimFZxMjZtWyLOxiWOxK-gm-e1Doa4210vZL1zKsT4aZ_xVpQkxsijL4P5FD-wOFfGCtdC88g"
+                  />
+                  <div>
+                    <p class="font-semibold text-primary">Sarah L.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Regular Guest
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-background-dark rounded-lg shadow-lg p-6 flex flex-col"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
+                <div class="flex-grow">
+                  <p class="text-text-light dark:text-text-dark mb-4">
+                    "I came for the shisha and stayed for the atmosphere. It's
+                    the perfect place to unwind after a long week. The special
+                    mix is a must-try!"
+                  </p>
+                </div>
+                <div class="flex items-center mt-4">
+                  <img
+                    alt="Avatar of another smiling man"
+                    class="w-12 h-12 rounded-full mr-4"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDghlw3LgHbSQYtBAXjo1mrCwy6cAPFwQQqsC9yv3yUShceYQG2M-KVxnz1tWnsLzqzBkKv5mIMSb41tC0vXCoBiN34r47I4IQ207EneudlZLJ71Be10_THD0UfhKvHW5Mn2orCXfmvPwKRQY0Wf32DCFgXA6tH8Ft2fHXGlkL8xjS9v3JQvaRXHyTtljf2VHyDJemaL4H9ZKupelFr-_2BJTJz13AWyF-JkjeE3lwSb8haw6UMUOfE-zXrG0WHH4IMpSRlJsE8AQ"
+                  />
+                  <div>
+                    <p class="font-semibold text-primary">Mike P.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Shisha Enthusiast
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-20 px-6 md:px-12 bg-background-light dark:bg-background-dark"
+          id="gallery"
+        >
+          <div class="container mx-auto">
+            <h2
+              class="text-4xl font-bold text-center mb-12 text-primary"
+              data-aos="fade-up"
+              data-aos-duration="3000"
+            >
+              Gallery
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="2000"
+              >
+                <img
+                  alt="A colorful salad dish"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAiFdgYQcBHMnEy60esisrXDxEUZC3DNfemKSOoBmpTWTOGGEo70XrUO4tm4gjaGk1wE8kpTniqPv9eo47Tprnxq5cAZDHLVvq6MGth5cvAUuwSi3uhgGeMM6MaVTuaNaQujZGyKupO6QPIzmL7XmTlThF2HwltMmFBW0UMBZwY9Ns3oip2yCxOo-24UjaZro13M8whbDz6pIgXr0OxxV1xOkenukfCFsCFmdpw2u_4Pp6r9KjdKsOUiWDgVgsw1iAO3YIVtStvQ"
+                />
+              </div>
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="2400"
+              >
+                <img
+                  alt="Restaurant ambiance with warm lighting"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjL7E_tJk84wuSSDb7ieqruznZVPd-DAD_kPSOXkjGbvPnSkLPnHOhCYzIIP2p1C_sFbl90S0qNSJeDDIhFz6Q0qb5n5BBfqHJ-PtiFzD-UtnjesljPcAhOs24u1Qc-Sm2ZpmOu5nh0fouNDVUk0H9fDZXSC9v1ABSDL1gQXP9Bl309HAaAa4fJ55lFS6M35jdEB9Y5Trk9RBSO2utxTK9UXmNRyZz1AkCZADgGoL1lA-gJyGALyDKvSNBtKzTLiKOkFuXeNR16w"
+                />
+              </div>
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="2600"
+              >
+                <img
+                  alt="A gourmet burger with fries"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbwyzGNbLp7eD40AEgO_U57dbDOVEzo5nQU0OthUdSWqPLOTnONzY6Rvxh8cNpGXRYtRivt8qUL3Q7yXklekyDICO5N42awvsEZ-cKmaOyhuBHIhsDaHPgfy-Q9S1rLnuUfNXYMtybWMpdTk7loTgk1VBI3rgfB4wXYPkFSK2ol6STXuvRjUFcyZ8CJp-X4-8KPMQUnYnYjJXfE0qV9rC3b8L8h8k8mONz3DtsNKqTyPqV5Ej4YY60JGZVH6kZ0W6UnZgmwh4Rfw"
+                />
+              </div>
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="2800"
+              >
+                <img
+                  alt="A person enjoying shisha"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-I46JmsJC2dJ8zMH2rhwGMee2peMZU_DjKcTWi-hae8nk2na66cYtE9g6Kv5livRIkI1sUwnScOJH4yQj9Lgu-KKTsJSzyR1W4tT8nWrDM2MJzFggRWmj0zt5C3_v8j0PG_dahd5uR1KrCUmq9s5B5PFlzAJHiHCiT5uvXxW0bEPofTOcPgnnJf8ndvsqny_PgJtSlT3P9D1KRlR23dpPgMenQ74nJ9S39_2pIzYLn6Rglb_BZzIwGOJLHmHb1cHWZkVtF53P3w"
+                />
+              </div>
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="3000"
+              >
+                <img
+                  alt="Close up of a fancy cocktail"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOAPxl0QxsjA2gOQ7m5OmHrxifrzYAwDOqkI6HZPWx8vDRL_K3UIcaKiRCLd-ABn2hAai7f5wqrOZpsbYDoNE1FR1Qbl39ozwthOhaGH-ExNcZrA0rohYADwlbqi4MsDKUNNrVYsyCplt_WwpJkU85kUsPKixFS_O6bLhpOSOxUxY24l4j4WMuJt5bNzTMfLnGLM6oKt63ZlJduKSKHCdalaHuXzHCjmIqZn-fszRD_hYWAwjEa4msg2rqnWEnU1kHImkVZnrvFA"
+                />
+              </div>
+              <div
+                class="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-left"
+                data-aos-duration="3000"
+              >
+                <img
+                  alt="A delicious looking pasta dish"
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVk5jCANP8iJtHZWxf00y0zouBgcPgVvi6c4F4IT3VyRiKfGC-JY0Q2hiMzQWJ0o49FL6Z4zB-ltL83hQeGoOUaglNe2EZvvhQ0w2MZlnXHLghnUN7QdmAv5yADFLyO2ltD53gASxr3DxEsv-eLaXBrCEqbjmBVccFZysIhFtxFHq0ob5sJmcfgMAmV7U6SksKNW0L_6C2yqAiFBk35S7Kq9tXT1f-VXLE43j6bE56_8jJ_OBPY1aqQVX-7Cp_b9_j7KTuXahTlw"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-20 px-6 md:px-12 bg-background-light dark:bg-background-dark"
+          id="contact"
+          data-aos="fade-left"
+          data-aos-duration="2600"
+        >
+          <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-12 text-primary">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-4 text-primary">Location</h3>
+                <p class="text-text-light dark:text-text-dark mb-4">
+                  123 Manor Lane, Berwick, BW 12345
+                </p>
+                <div class="h-64 rounded-lg overflow-hidden">
+                  <iframe
+                    allowfullscreen=""
+                    height="100%"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.228941235198!2d145.1294244153163!3d-37.78363797975825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad644e5a5ea3e9d%3A0x2a0432857317775!2sMelbourne%20Australia!5e0!3m2!1sen!2sus!4v1683141158580!5m2!1sen!2sus"
+                    style="border: 0"
+                    width="100%"
+                  ></iframe>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
+                data-aos="fade-left"
+                data-aos-duration="2600"
+              >
+                <h3 class="text-2xl font-bold mb-4 text-primary">Hours</h3>
+                <ul class="text-text-light dark:text-text-dark space-y-2">
+                  <li>
+                    <span class="font-semibold">Monday - Thursday:</span> 5:00
+                    PM - 11:00 PM
+                  </li>
+                  <li>
+                    <span class="font-semibold">Friday - Saturday:</span> 5:00
+                    PM - 1:00 AM
+                  </li>
+                  <li>
+                    <span class="font-semibold">Sunday:</span> 4:00 PM - 10:00
+                    PM
+                  </li>
+                </ul>
+                <h3 class="text-2xl font-bold mt-8 mb-4 text-primary">
+                  Get in Touch
+                </h3>
+                <p class="text-text-light dark:text-text-dark mb-2">
+                  <span class="material-icons align-middle mr-2">phone</span>
+                  (123) 456-7890
+                </p>
+                <p class="text-text-light dark:text-text-dark">
+                  <span class="material-icons align-middle mr-2">email</span>
+                  contact@berwickmanor.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="bg-gray-900 text-white py-12 px-6 md:px-12">
+        <div
+          class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left"
+        >
+          <div>
+            <img
+              alt="Berwick Manor Logo"
+              class="h-12 w-12 md:h-14 md:w-14"
+              src="Logo white.png"
+            />
+            <br />
+            <h3 class="text-xl font-bold mb-4">Berwick Manor</h3>
+            <p class="text-gray-400">
+              Experience dining and shisha in a luxurious and unforgettable
+              setting.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  href="#"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  href="#menu"
+                  >Menu</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  href="#about"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  href="#contact"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+            <div class="flex justify-center md:justify-start space-x-4">
+              <a
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+                href="#"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.494v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+                href="#"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+                href="#"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.295 1.615 4.212 3.766 4.647-.692.188-1.436.233-2.19.084.621 1.893 2.422 3.272 4.556 3.311-1.883 1.473-4.254 2.352-6.842 2.352-.445 0-.883-.026-1.314-.077 2.425 1.553 5.32 2.458 8.441 2.458 10.134 0 15.678-8.403 15.423-15.822.984-.711 1.832-1.599 2.507-2.604z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500"
+        >
+          <p>© 2023 Berwick Manor. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
